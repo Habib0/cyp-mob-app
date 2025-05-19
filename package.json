@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "cypress": "^14.3.3",
+    "cypress-plugin-api": "^2.11.2"
+  },
+  "devDependencies": {
+    "cypress-mailslurp": "^1.10.0"
+  }
+}

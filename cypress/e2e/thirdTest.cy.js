@@ -83,6 +83,14 @@ describe('Email verification and login link test', () => {
         cy.log('login link clicked and verified successfully');
       });
     });
+    cy.get('@emailAddress').then((email) => {
+  cy.writeFile('signup-info.json', {
+    signupEmail: email,
+    message: 'Signup via email, link receive in email then verified and login successfully.',
+    timestamp: new Date().toISOString()
+  });
+});
+
   });
 });
 

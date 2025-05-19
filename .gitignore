@@ -1,7 +1,6 @@
 node_modules
 /node_modules
 /cypress/videos
-/devDrive.json
-/TestReport
-/Tests
 cypress/screenshots
+/signup-info.json
+/.env

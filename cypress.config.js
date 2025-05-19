@@ -1,12 +1,13 @@
+require('dotenv').config();
 const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
     e2e: {
-      baseUrl: 'https://upticker.xeventechnologies.com',
     env: {
-      apiBaseUrl: 'https://uptickerbe.xeventechnologies.com/api',
-      verifyUserEndpoint: '/auth/verify-user',
-      checkEmailEndpoint: '/auth/check-email',
+      apiBaseUrl: process.env.API_BASE_URL,
+      checkEmailEndpoint: process.env.CHECK_EMAIL_ENDPOINT,
+      verifyUserEndpoint: process.env.VERIFY_USER_ENDPOINT,
+      mailslurpApiKey: process.env.MAILSLURP_API_KEY,
     },
     specPattern: [
       'cypress/e2e/thirdTest.cy.js',

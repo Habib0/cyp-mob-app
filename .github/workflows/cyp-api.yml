@@ -7,6 +7,15 @@ jobs:
   cypress-run:
     runs-on: ubuntu-latest
 
+    env:
+      API_BASE_URL: ${{ secrets.API_BASE_URL }}
+      CHECK_EMAIL_ENDPOINT: ${{ secrets.CHECK_EMAIL_ENDPOINT }}
+      VERIFY_USER_ENDPOINT: ${{ secrets.VERIFY_USER_ENDPOINT }}
+      MAILSLURP_API_KEY: ${{ secrets.MAILSLURP_API_KEY }}
+      SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
+      REPORT_RECEIVER_EMAIL: ${{ secrets.REPORT_RECEIVER_EMAIL }}
+      SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -16,8 +25,21 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install Dependencies
+      - name: Install dependencies
         run: npm install
 
-      - name: Run Cypress Tests
+      - name: Create .env file
+        run: |
+          echo "API_BASE_URL=$API_BASE_URL" >> .env
+          echo "CHECK_EMAIL_ENDPOINT=$CHECK_EMAIL_ENDPOINT" >> .env
+          echo "VERIFY_USER_ENDPOINT=$VERIFY_USER_ENDPOINT" >> .env
+          echo "MAILSLURP_API_KEY=$MAILSLURP_API_KEY" >> .env
+          echo "SENDGRID_API_KEY=$SENDGRID_API_KEY" >> .env
+          echo "REPORT_RECEIVER_EMAIL=$REPORT_RECEIVER_EMAIL" >> .env
+          echo "SENDER_EMAIL=$SENDER_EMAIL" >> .env
+
+      - name: Run Cypress tests
         run: npm run cyp
+
+      - name: Send Email Report
+        run: node sendReport.js

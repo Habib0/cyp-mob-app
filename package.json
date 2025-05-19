@@ -9,8 +9,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@sendgrid/mail": "^8.1.5",
     "cypress": "^14.3.3",
-    "cypress-plugin-api": "^2.11.2"
+    "cypress-plugin-api": "^2.11.2",
+    "dotenv": "^16.5.0"
   },
   "devDependencies": {
     "cypress-mailslurp": "^1.10.0"

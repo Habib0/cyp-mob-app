@@ -1,4 +1,13 @@
 {
+  "name": "z",
+  "version": "1.0.0",
+  "description": "cypress test",
+  "main": "index.js",
+  "scripts": {
+    "cyp": "npx cypress run --config-file=cypress.config.js --browser=chrome --headless"
+  },
+  "author": "",
+  "license": "ISC",
   "dependencies": {
     "cypress": "^14.3.3",
     "cypress-plugin-api": "^2.11.2"

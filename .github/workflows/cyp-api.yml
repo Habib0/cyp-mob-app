@@ -41,5 +41,15 @@ jobs:
       - name: Run Cypress tests
         run: npm run cyp
 
+      - name: Create signup-info.json (dummy for CI/CD)
+        run: |
+          echo '[
+            {
+              "signupEmail": "test1@example.com",
+              "message": "Success",
+              "timestamp": "'$(date --utc +%Y-%m-%dT%H:%M:%SZ)'"
+            }
+          ]' > signup-info.json
+
       - name: Send Email Report
         run: node sendReport.js

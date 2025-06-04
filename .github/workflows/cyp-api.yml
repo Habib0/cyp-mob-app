@@ -6,7 +6,6 @@ on:
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
-
     env:
       API_BASE_URL: ${{ secrets.API_BASE_URL }}
       CHECK_EMAIL_ENDPOINT: ${{ secrets.CHECK_EMAIL_ENDPOINT }}
@@ -15,7 +14,6 @@ jobs:
       SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
       REPORT_RECEIVER_EMAIL: ${{ secrets.REPORT_RECEIVER_EMAIL }}
       SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -40,16 +38,6 @@ jobs:
 
       - name: Run Cypress tests
         run: npm run cyp
-
-      - name: Create signup-info.json (dummy for CI/CD)
-        run: |
-          echo '[
-            {
-              "signupEmail": "test1@example.com",
-              "message": "Success",
-              "timestamp": "'$(date --utc +%Y-%m-%dT%H:%M:%SZ)'"
-            }
-          ]' > signup-info.json
 
       - name: Send Email Report
         run: node sendReport.js

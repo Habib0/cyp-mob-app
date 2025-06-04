@@ -25,11 +25,11 @@ const textList = results.map((r, i) =>
 const msg = {
   to: process.env.REPORT_RECEIVER_EMAIL,   // ✅ Must be real and accessible
   from: process.env.SENDER_EMAIL,          // ✅ Use authenticated domain (not Gmail/Yahoo)
-  subject: '✅ Signup/Sigin Test Report: 10 Emails Verified',
-  text: `Test Completed (10 Signups)\n\n${textList}`,
+  subject: '✅ Signup/Sigin Test Report: 05 Emails Verified',
+  text: `Test Completed (05 Signups)\n\n${textList}`,
   html: `
     <div style="font-family: Arial, sans-serif; font-size: 14px; color: #333;">
-      <h2>✅ Test Completed (10 Signups)</h2>
+      <h2>✅ Automated Test Completed (05 Signups)</h2>
       <ul>${htmlList}</ul>
     </div>
   `

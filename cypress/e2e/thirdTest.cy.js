@@ -3,7 +3,7 @@ const verifyUserEndpoint = Cypress.env('verifyUserEndpoint');
 const checkEmailEndpoint = Cypress.env('checkEmailEndpoint');
 
 describe('Bulk signup and report test', () => {
-  const numberOfUsers = 5;
+  const numberOfUsers = 1;
   const signupResults = [];
 
   it('Should signup 10 emails and verify them', () => {

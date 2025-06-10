@@ -68,7 +68,7 @@ expect(loginUrl).to.match(/^http/);
     // Wait for all signup tasks to complete
     return Cypress.Promise.all(tasks).then(() => {
       // Write result file
-      cy.writeFile('signup-info.json', signupResults);
+      cy.writeFile('cypress/signup-info.json', signupResults);
     });
   });
 });

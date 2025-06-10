@@ -40,10 +40,12 @@ jobs:
       - name: Run Cypress tests
         run: npm run cyp
 
-      - name: Check if signup-info.json exists
+      - name: Check if signup-info.json was created
         run: |
-          if [ -f signup-info.json ]; then
-            echo "signup-info.json exists."
+          echo "Looking for cypress/signup-info.json..."
+          ls -la cypress/
+          if [ -f cypress/signup-info.json ]; then
+            echo "✅ signup-info.json exists."
           else
             echo "❌ signup-info.json was not created."
             exit 1

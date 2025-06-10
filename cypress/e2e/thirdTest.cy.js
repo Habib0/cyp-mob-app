@@ -3,11 +3,11 @@ const verifyUserEndpoint = Cypress.env('verifyUserEndpoint');
 const checkEmailEndpoint = Cypress.env('checkEmailEndpoint');
 
 describe('Bulk signup and report test', () => {
-  const numberOfUsers = 2;
+  const numberOfUsers = 5;
   const signupResults = [];
 
-  it('Should signup 10 emails and verify them', () => {
-    // Loop through 10 times using Cypress.Promise.all
+  it('Should signup 05 emails and verify them', () => {
+    // Loop through 05 times using Cypress.Promise.all
     const tasks = Cypress._.times(numberOfUsers, () => {
       return cy.mailslurp().then(mailslurp => {
         return mailslurp.createInbox().then(inbox => {

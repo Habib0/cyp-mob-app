@@ -2,11 +2,11 @@ require('dotenv').config();
 const sgMail = require('@sendgrid/mail');
 const fs = require('fs');
 
-// Set SendGrid API key from .env
+// Set SendGrid API key
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-// Read report data
-const results = JSON.parse(fs.readFileSync('./signup-info.json', 'utf8'));
+// ✅ Correct file path
+const results = JSON.parse(fs.readFileSync('./cypress/signup-info.json', 'utf8'));
 
 // Build HTML and text content
 const htmlList = results.map((r, i) => `
@@ -17,19 +17,19 @@ const htmlList = results.map((r, i) => `
   </li>
 `).join('');
 
-const textList = results.map((r, i) => 
+const textList = results.map((r, i) =>
   `Email ${i + 1}: ${r.signupEmail}\nStatus: ${r.message}\nTime: ${r.timestamp}\n`
 ).join('\n');
 
-// Create email message
+// Email content
 const msg = {
-  to: process.env.REPORT_RECEIVER_EMAIL,   // ✅ Must be real and accessible
-  from: process.env.SENDER_EMAIL,          // ✅ Use authenticated domain (not Gmail/Yahoo)
-  subject: '✅ Signup/Sigin Test Report: 05 Emails Verified',
-  text: `Test Completed (05 Signups)\n\n${textList}`,
+  to: process.env.REPORT_RECEIVER_EMAIL,
+  from: process.env.SENDER_EMAIL,
+  subject: `✅ Signup/Sign-in Test Report: ${results.length} Emails Verified`,
+  text: `Test Completed (${results.length} Signups)\n\n${textList}`,
   html: `
     <div style="font-family: Arial, sans-serif; font-size: 14px; color: #333;">
-      <h2>✅ Automated Test Completed (05 Signups)</h2>
+      <h2>✅ Automated Test Completed (${results.length} Signups)</h2>
       <ul>${htmlList}</ul>
     </div>
   `

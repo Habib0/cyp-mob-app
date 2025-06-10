@@ -3,3 +3,5 @@ node_modules
 /cypress/videos
 cypress/screenshots
 /.env
+signup-info.json
+/signup-info.json
